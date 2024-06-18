@@ -1,0 +1,30 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
+
+struct Contact {
+    std::string name;
+    std::string phoneNumber;
+    std::string email;
+};
+
+std::vector<Contact> contacts;
+
+void loadContacts() {
+    std::ifstream infile("contacts.txt");
+    if (infile.is_open()) {
+        Contact contact;
+        while (infile >> contact.name >> contact.phoneNumber >> contact.email) {
+            contacts.push_back(contact);
+        }
+        infile.close();
+    }
+}
+
+void saveContacts() {
+    std::ofstream outfile("contacts.txt");
+    for (const auto& contact : contacts) {
+        outfile << contact.name << " " << contact.phoneNumber << " " << contact.email << std::endl;
+    }
+    outfile.close();
