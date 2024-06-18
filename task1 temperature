@@ -1,0 +1,75 @@
+#include <iostream>
+#include <iomanip> // For setting precision
+
+using namespace std;
+
+// Function to convert Celsius to Fahrenheit
+double celsiusToFahrenheit(double celsius) {
+    return (celsius * 9/5) + 32;
+}
+
+// Function to convert Celsius to Kelvin
+double celsiusToKelvin(double celsius) {
+    return celsius + 273.15;
+}
+
+// Function to convert Fahrenheit to Celsius
+double fahrenheitToCelsius(double fahrenheit) {
+    return (fahrenheit - 32) * 5/9;
+}
+
+// Function to convert Fahrenheit to Kelvin
+double fahrenheitToKelvin(double fahrenheit) {
+    return (fahrenheit - 32) * 5/9 + 273.15;
+}
+
+// Function to convert Kelvin to Celsius
+double kelvinToCelsius(double kelvin) {
+    return kelvin - 273.15;
+}
+
+// Function to convert Kelvin to Fahrenheit
+double kelvinToFahrenheit(double kelvin) {
+    return (kelvin - 273.15) * 9/5 + 32;
+}
+
+int main() {
+    double temperature;
+    char unit;
+    
+    // Prompt the user for input
+    cout << "Enter temperature: ";
+    cin >> temperature;
+    cout << "Enter unit (C for Celsius, F for Fahrenheit, K for Kelvin): ";
+    cin >> unit;
+    
+    // Set precision for the output
+    cout << fixed << setprecision(2);
+    
+    // Perform conversions and display results
+    switch (unit) {
+        case 'C':
+        case 'c':
+            cout << temperature << " degrees Celsius is:" << endl;
+            cout << celsiusToFahrenheit(temperature) << " degrees Fahrenheit" << endl;
+            cout << celsiusToKelvin(temperature) << " Kelvin" << endl;
+            break;
+        case 'F':
+        case 'f':
+            cout << temperature << " degrees Fahrenheit is:" << endl;
+            cout << fahrenheitToCelsius(temperature) << " degrees Celsius" << endl;
+            cout << fahrenheitToKelvin(temperature) << " Kelvin" << endl;
+            break;
+        case 'K':
+        case 'k':
+            cout << temperature << " Kelvin is:" << endl;
+            cout << kelvinToCelsius(temperature) << " degrees Celsius" << endl;
+            cout << kelvinToFahrenheit(temperature) << " degrees Fahrenheit" << endl;
+            break;
+        default:
+            cout << "Invalid unit entered!" << endl;
+            break;
+    }
+    
+    return 0;
+}
